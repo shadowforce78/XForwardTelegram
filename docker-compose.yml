@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  bot:
+    image: node:20-bullseye
+    container_name: xforward-bot
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: bash -c "apt-get update && apt-get install -y ffmpeg && npm install && npm start"
+    restart: unless-stopped
